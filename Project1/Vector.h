@@ -18,4 +18,7 @@ public:
 
 	/// перегрузки операции
 	Vector operator-(int a);
+	Vector operator+(int a);
+	Vector operator*(int a);
+	Vector operator/(int a);
 };
