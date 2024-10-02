@@ -87,4 +87,19 @@ Vector Vector::operator- (int a)
 		rez.arr[i] = this->arr[i];
 	}
 	return rez;
+
+}
+
+Vector Vector::operator+(int a)
+{
+}
+
+Vector Vector::operator*(int a)
+{
+	return Vector();
+}
+
+Vector Vector::operator/(int a)
+{
+	return Vector();
 }
