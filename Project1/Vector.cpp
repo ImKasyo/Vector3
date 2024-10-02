@@ -92,6 +92,13 @@ Vector Vector::operator- (int a)
 
 Vector Vector::operator+(int a)
 {
+	Vector rez(size + a);
+	for (int i = 0; i < size; i++) {
+		rez.arr[i] = this->arr[i];
+	}
+	for (int i = 0; i < size + a; i++) {
+		rez.arr[i] = 0;
+	}
 }
 
 Vector Vector::operator*(int a)
