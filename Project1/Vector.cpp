@@ -1,6 +1,7 @@
 #include "Vector.h"
 #include<iostream>
 #include<Windows.h>
+#include <initializer_list>
 using namespace std;
 
 Vector::Vector()
@@ -13,6 +14,7 @@ Vector::Vector(int s)
 	size = s;
 	arr = new int[size] {0};
 }
+
 Vector::~Vector()
 {
 	cout << "Destructor\n";
@@ -99,6 +101,7 @@ Vector Vector::operator+(int a)
 	for (int i = 0; i < size + a; i++) {
 		rez.arr[i] = 0;
 	}
+	return rez;
 }
 
 Vector Vector::operator*(int a)
@@ -109,4 +112,15 @@ Vector Vector::operator*(int a)
 Vector Vector::operator/(int a)
 {
 	return Vector();
+}
+
+Vector::Vector(initializer_list<int> a)
+{
+	size = a.size();
+	arr = new int[size];
+	for (auto x = a.begin(); x != a.end(); x++) {
+		*arr = *x;
+		arr++;
+	}
+	arr -= size;
 }

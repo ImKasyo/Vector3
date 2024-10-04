@@ -21,4 +21,6 @@ public:
 	Vector operator+(int a);
 	Vector operator*(int a);
 	Vector operator/(int a);
+
+	Vector(initializer_list <int> a);
 };
