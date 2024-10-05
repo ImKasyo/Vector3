@@ -136,7 +136,10 @@ Vector Vector::operator+(int a)
 
 Vector Vector::operator*(int a)
 {
-	return Vector();
+	for (int i = 0; i < size; i++) {
+		arr[i] *= a;
+	}
+	return *this;
 }
 
 Vector Vector::operator/(int a)

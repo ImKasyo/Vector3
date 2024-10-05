@@ -26,6 +26,11 @@ int main()
 	obj6.Print();
 	obj6 = obj6 + 5; //оператор присваивания
 	obj6.Print();
+	obj6 = obj6 - 5;
+	obj6.Print();
+	obj6 = obj6 * 5;
+	obj6.Print();
+	
 	
 
 
