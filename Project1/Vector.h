@@ -15,6 +15,7 @@ public:
 	void PushBack(int a);
 	int PopBack();
 
+	Vector& operator=(const Vector& obj);
 
 	/// перегрузки операции
 	Vector operator-(int a);
@@ -22,5 +23,5 @@ public:
 	Vector operator*(int a);
 	Vector operator/(int a);
 
-	Vector(initializer_list <int> a);
+	/*Vector(initializer_list <int> a);*/
 };

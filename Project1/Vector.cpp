@@ -12,15 +12,20 @@ Vector::Vector()
 Vector::Vector(int s)
 {
 	size = s;
-	arr = new int[size] {0};
+	arr = new int[size];
+	for (int i = 0; i < s; i++) {
+		arr[i] = i + 1;
+	}
 }
 
 Vector::~Vector()
 {
-	cout << "Destructor\n";
-	delete[]arr;
-	size = 0;
-	
+	if (arr != nullptr) {
+		cout << "Destructor\n";
+		delete[] arr;
+		arr = nullptr;
+		size = 0;
+	}
 }
 Vector::Vector(const Vector& obj)
 {
@@ -80,17 +85,39 @@ int Vector::PopBack()
 
 	return el;
 }
-
-Vector Vector::operator- (int a)
+Vector& Vector::operator=(const Vector& obj)
 {
-	Vector rez(size - a); // 5 - 2 = 3
-	for (int i = 0; i < rez.size; i++)
-	{
-		rez.arr[i] = this->arr[i];
+	if (this == &obj) {
+		return *this;  // Проверка на самоприсваивание
 	}
-	return rez;
 
+	// Удаляем старую память, чтобы избежать утечек
+	delete[] arr;
+
+	// Копируем размер
+	this->size = obj.size;
+
+	// Выделяем новую память
+	this->arr = new int[size];
+
+	// Копируем элементы
+	for (int i = 0; i < size; i++) {
+		this->arr[i] = obj.arr[i];
+	}
+
+	return *this;
 }
+//
+//Vector Vector::operator- (int a)
+//{
+//	Vector rez(size - a); // 5 - 2 = 3
+//	for (int i = 0; i < rez.size; i++)
+//	{
+//		rez.arr[i] = this->arr[i];
+//	}
+//	return rez;
+//
+//}
 
 Vector Vector::operator+(int a)
 {
@@ -98,7 +125,7 @@ Vector Vector::operator+(int a)
 	for (int i = 0; i < size; i++) {
 		rez.arr[i] = this->arr[i];
 	}
-	for (int i = 0; i < size + a; i++) {
+	for (int i = size; i < size + a; i++) {
 		rez.arr[i] = 0;
 	}
 	return rez;
@@ -114,13 +141,13 @@ Vector Vector::operator/(int a)
 	return Vector();
 }
 
-Vector::Vector(initializer_list<int> a)
-{
-	size = a.size();
-	arr = new int[size];
-	for (auto x = a.begin(); x != a.end(); x++) {
-		*arr = *x;
-		arr++;
-	}
-	arr -= size;
-}
+//Vector::Vector(initializer_list<int> a)
+//{
+//	size = a.size();
+//	arr = new int[size];
+//	for (auto x = a.begin(); x != a.end(); x++) {
+//		*arr = *x;
+//		arr++;
+//	}
+//	arr -= size;
+//}
