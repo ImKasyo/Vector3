@@ -107,17 +107,20 @@ Vector& Vector::operator=(const Vector& obj)
 
 	return *this;
 }
-//
-//Vector Vector::operator- (int a)
-//{
-//	Vector rez(size - a); // 5 - 2 = 3
-//	for (int i = 0; i < rez.size; i++)
-//	{
-//		rez.arr[i] = this->arr[i];
-//	}
-//	return rez;
-//
-//}
+
+Vector Vector::operator- (int a)
+{
+	if (size >= 5) {
+		Vector rez(size - a); // 5 - 2 = 3
+		for (int i = 0; i < rez.size; i++)
+		{
+			rez.arr[i] = this->arr[i];
+		}
+		return rez;
+	}
+	return Vector();
+
+}
 
 Vector Vector::operator+(int a)
 {
